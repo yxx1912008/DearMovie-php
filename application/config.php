@@ -98,7 +98,7 @@ return [
     'url_domain_deploy'      => false,
     // 域名根，如thinkphp.cn
     'url_domain_root'        => '',
-    // 是否自动转换URL中的控制器和操作名
+    // 是否自动转换URL中的控制器和操作名  （关闭后可以支持驼峰式命名规范）
     'url_convert'            => true,
     // 默认的访问控制器层
     'url_controller_layer'   => 'controller',

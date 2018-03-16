@@ -4,6 +4,7 @@ namespace app\index\controller;
 
 //导入controller类库
 use think\Controller;
+use think\Db;
 
 class Index extends Controller
 {
@@ -30,6 +31,14 @@ class Index extends Controller
     public function testTemplate($name = 'yxx')
     {
         $this->assign('name', $name);
+        return $this->fetch();
+    }
+
+
+    public  function  readDataBase(){
+
+        $data=Db::name('students')->find();
+        $this->assign('result',$data);
         return $this->fetch();
     }
 

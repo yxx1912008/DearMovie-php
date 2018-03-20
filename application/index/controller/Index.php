@@ -6,6 +6,7 @@ namespace app\index\controller;
 use think\Controller;
 use think\Db;
 use think\Request;
+use think\response\Json;
 
 class Index extends Controller
 {
@@ -95,16 +96,52 @@ class Index extends Controller
     public function testResObj()
     {
         $data = ['id' => '001', 'name' => 'yuanxx'];
-        return $this->redirect('http://baidu.com');
-
+        /*return $this->redirect('http://baidu.com');*/
+        /*测试返回json数据*/
+        return json($data);
     }
 
 
+    /**
+     * 测试数据库操作
+     * 支持切换数据库操作
+     */
     public function searchDb()
     {
         $result = Db::execute('select * from students');
         dump($result);
+        /*测试使用变量插入*/
+        $result_insert = Db::execute('insert into students(name)VALUE(?) ', ['林月如']);
+        dump($result_insert);
+        /*测试使用命名占位符绑定*/
+        $result_namespace = Db::execute('insert into students(name)VALUE (:name)', ['name' => '阿奴']);
+        dump($result_namespace);
     }
+
+    /**
+     * 测试数据库 查询构造器
+     *
+     */
+    public function searchDbPro()
+    {
+
+        //插入记录
+        /* $result_insert = Db::table('students')->insert(['name' => '念奴娇']);
+         dump($result_insert);*/
+        //更新记录
+        $result_update = Db::table('students')->where('id', 6)->update(['name' => '酒剑仙']);
+        dump($result_update);
+        //删除记录
+        $result_del = Db::table('students')->where('id', 11)->delete();
+        dump($result_del);
+        //查询记录
+        $list = Db::table('students')->where('id', '6')->select();
+        dump($list);
+        echo $list[0]['name'];
+
+    }
+
+
 }
 
 

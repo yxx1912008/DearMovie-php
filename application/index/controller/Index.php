@@ -159,8 +159,61 @@ class Index extends Controller
         //查
         $list = $db->where('id', 14)->select();
         echo $list[0]['name'];
+    }
+
+    /**
+     * 测试数据库链式操作
+     * 进行复杂的查询
+     */
+    public function testDbChain()
+    {
+        $list = Db::table('students')
+            ->where('id>10')
+            ->order('id', 'desc')
+            ->select();
+        dump($list);
+    }
+
+
+    /**
+     * 测试数据库事务
+     */
+    public function testWork()
+    {
+        Db::transaction(function () {
+            Db::table('students')->insert(['name' => '蔡文姬1']);
+            Db::table('students')->insert(['id' => '17', 'name' => '蔡文姬']);
+        });
+    }
+
+    /**
+     * 批量查询测试
+     */
+    public function testSql()
+    {
+        //查询ID大于10 名字类似的
+        $list = Db::table('students')
+            ->where(
+                [
+                    'id' => ['>', '10'],
+                    'name' => ['like', '%小%']
+                ])
+            ->select();
+        dump($list);
+        //测试聚合查询
+        $count = Db::table('students')
+            ->count();
+        echo $count;
+        //条件查询
+        $arry = Db::table('students')
+            ->where('id > :id', ['id' => '10'])
+            ->select();
+        dump($arry);
+
 
     }
+
+
 }
 
 

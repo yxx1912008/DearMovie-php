@@ -38,10 +38,10 @@ class TeacherController extends Controller
     /**
      * 更新老师
      */
-    public function updateTeacher()
+    public function updateTeacher($id = 1)
     {
         $teacher = new TeacherModel();
-        $teacher['id'] = 1;
+        $teacher['id'] = (int)$id;
         $teacher['name'] = '孙悟空';
         $teacher->isUpdate()->save();
     }

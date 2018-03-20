@@ -46,8 +46,8 @@ return [
     'default_lang'           => 'zh-cn',
     // 应用类库后缀
     'class_suffix'           => false,
-    // 控制器类后缀
-    'controller_suffix'      => false,
+    // 控制器类后缀 (打开以后 自动适配controller)
+    'controller_suffix'      => true,
 
     // +----------------------------------------------------------------------
     // | 模块设置

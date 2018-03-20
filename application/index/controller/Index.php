@@ -78,8 +78,32 @@ class Index extends Controller
         $arr = $this->request->header();
         dump($arr) . '<br>';
         /*取出键值对的值*/
-        echo $arr['loginchannel'].'<br>';
+        echo $arr['loginchannel'] . '<br>';
+        /*取出请求中带的参数*/
+        echo $this->request->param()['num'] . '<br>';
+        /*使用助手简化操作 取出请求中的参数*/
+        echo input('id') . '<br>';
+        /*取出照片*/
+        dump($this->request->file('images'));
         return 'hello,' . $name . '!';
+    }
+
+    /**
+     * respongs 可以返回 json jsonp
+     * 可以重定向 可以渲染模板输出
+     */
+    public function testResObj()
+    {
+        $data = ['id' => '001', 'name' => 'yuanxx'];
+        return $this->redirect('http://baidu.com');
+
+    }
+
+
+    public function searchDb()
+    {
+        $result = Db::execute('select * from students');
+        dump($result);
     }
 }
 

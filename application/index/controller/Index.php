@@ -209,8 +209,6 @@ class Index extends Controller
             ->where('id > :id', ['id' => '10'])
             ->select();
         dump($arry);
-
-
     }
 
 

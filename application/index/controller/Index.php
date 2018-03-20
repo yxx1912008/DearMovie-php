@@ -138,10 +138,29 @@ class Index extends Controller
         $list = Db::table('students')->where('id', '6')->select();
         dump($list);
         echo $list[0]['name'];
-
     }
 
+    /**
+     * 测试数据库 操作
+     * 使用助手函数
+     * 助手函数每次会默认重新连接数据库，尽量减少多次调用
+     *
+     */
+    public function searchDbByHelper()
+    {
 
+        //增
+        $db = \db('students');
+        $db->insert(['name' => '小朱佩奇']);
+        //删
+        $db->where('id', 12)->delete();
+        //改
+        $db->where('id', 13)->update(['name' => '小猪乔治']);
+        //查
+        $list = $db->where('id', 14)->select();
+        echo $list[0]['name'];
+
+    }
 }
 
 

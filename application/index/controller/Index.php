@@ -3,10 +3,10 @@
 namespace app\index\controller;
 
 //导入controller类库
+use app\common\utils\HttpClientUtil;
 use think\Controller;
 use think\Db;
 use think\Request;
-use think\response\Json;
 
 class Index extends Controller
 {
@@ -209,6 +209,19 @@ class Index extends Controller
             ->where('id > :id', ['id' => '10'])
             ->select();
         dump($arry);
+    }
+
+
+    /**
+     * 测试页面抓取
+     */
+    public function testGetPage()
+    {
+        $host = config('douban_api_host');
+        $path = config('in_theaters_path');
+
+        $requester = new HttpClientUtil();
+        $requester->requestGet($host);
     }
 
 

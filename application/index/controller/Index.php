@@ -3,7 +3,6 @@
 namespace app\index\controller;
 
 //导入controller类库
-use app\common\utils\HttpClientUtil;
 use think\Controller;
 use think\Db;
 use think\Request;
@@ -219,9 +218,8 @@ class Index extends Controller
     {
         $host = config('douban_api_host');
         $path = config('in_theaters_path');
-
-        $requester = new HttpClientUtil();
-        $requester->requestGet($host);
+        $result = requestGet($host, $path);
+        return json($result);
     }
 
 

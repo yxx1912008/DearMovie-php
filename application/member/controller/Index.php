@@ -74,6 +74,7 @@ class Index
         $time = time();
         echo 'time:' . strtotime($time);
 
+
     }
 
 

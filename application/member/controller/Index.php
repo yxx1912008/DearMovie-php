@@ -58,7 +58,7 @@ class Index
      * 生成用户Id
      * @return string
      */
-    public function getUserId()
+    private function getUserId()
     {
         $salt = config('salt');
         $time = time();

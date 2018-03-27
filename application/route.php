@@ -29,5 +29,18 @@ return [
     /* 3.定义路由器参数 限定 post 或者 get 请求*/
 //    'hello/[:name]' => ['index/hello',['method'=>'GET',''=>'html']]
 
+    '[movie]' => [
+        'top250' => ['movie/index/top250'],
+        'in_theaters' => ['movie/index/in_theaters'],
+        'coming_soon' => ['movie/index/coming_soon'],
+        'search' => ['movie/index/search'],
+    ],
+    '[movie/subject]' => [
+        '/:id' => ['movie/index/getSubectById', ['id' => '\d+']],
+    ],
+    '[member]' => [
+        'getUserOpenId' => ['member/index/getUserOpenId']
+    ]
+
 
 ];

@@ -1,16 +1,19 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: yuanxx
- * Date: 2018/3/22
- * Time: 16:01
- */
 
-namespace app\index\controller;
+namespace app\movie\controller;
 
+use think\Controller;
 
-class Movie
+class Index extends Controller
 {
+    /**
+     * 默认首页
+     * @return string
+     */
+    public function index()
+    {
+        return json('接口调用成功');
+    }
 
 
     /**
@@ -73,6 +76,27 @@ class Movie
         $params = ['q' => $q, 'tag' => $tag, 'start' => $start, 'count' => $count];
         $result = requestGet($host, $path, $params);
         return json($result);
+    }
+
+
+    /**
+     * 根据ID获取电影条目信息
+     * @param string $id
+     * @return \think\response\Json
+     */
+    public function getSubectById($id = '1764796')
+    {
+        $host = config('douban_api_host');
+        $path = config('subject_id');
+        $result = requestGetNoParam($host, $path . $id);
+        return json($result);
+    }
+
+    public function getSubjectPhotos($id = '1764796')
+    {
+
+        echo 'xxx';
+
     }
 
 

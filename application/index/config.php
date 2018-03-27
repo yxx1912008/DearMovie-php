@@ -17,4 +17,8 @@ return [
     //关键字搜索电影
     'search' => '/v2/movie/search',
 
+    //电影条目信息
+    'subject' => '/v2/movie/'
+
+
 ];

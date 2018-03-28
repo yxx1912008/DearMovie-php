@@ -60,7 +60,7 @@ class Index
      */
     private function getUserId()
     {
-        $salt = config('salt');
+        $salt = config('SALT');
         $time = time();
         $saltWord = $salt . $time;
         $result = md5($saltWord);

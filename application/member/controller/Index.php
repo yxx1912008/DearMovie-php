@@ -3,6 +3,7 @@
 namespace app\member\controller;
 
 use app\member\model\WxUser;
+use think\Config;
 
 class Index
 {
@@ -67,16 +68,14 @@ class Index
         return $result;
     }
 
-    public function testTime()
+    /**
+     * 获取吱口令红包
+     * @return \think\response\Json
+     */
+    public function getGiftWordByAli()
     {
-
-        echo time() . '<br>';
-        $time = time();
-        echo 'time:' . strtotime($time);
-
-
-
-
+        $giftWord = \config('ALIPAY_WORD_GIFT');
+        return json(['result' => '1', 'giftWord' => $giftWord, 'msg' => '获取红包口令成功']);
     }
 
 

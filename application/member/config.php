@@ -13,6 +13,9 @@ return [
     //百度地图ak
     'BAIDU_MAP_AK' => 'C3c6361828d02efb673c6d4ffea9c41c',
     //百度地图定位Api
-    'BAIDU_MAP_GET_LOCATION_API' => 'https://api.map.baidu.com/geocoder/v2/?'
+    'BAIDU_MAP_GET_LOCATION_API' => 'https://api.map.baidu.com/geocoder/v2/?',
+    //支付宝红包口令
+    'ALIPAY_WORD_GIFT' => '快来领支付宝红包！人人可领，天天可领！复制此消息，打开最新版支付宝就能领取！udqPEv08rK',
+
 
 ];

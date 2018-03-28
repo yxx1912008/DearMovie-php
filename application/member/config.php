@@ -9,7 +9,10 @@ return [
     //APP SECRET
     'APP_SECRET' => '7a9329971652ad1434436e8a1d32a312',
     //盐 用来生成用户ID
-    'salt' => 'wedwqdw_+^*&^$%#$@!#$!@$'
-
+    'SALT' => 'wedwqdw_+^*&^$%#$@!#$!@$',
+    //百度地图ak
+    'BAIDU_MAP_AK' => 'C3c6361828d02efb673c6d4ffea9c41c',
+    //百度地图定位Api
+    'BAIDU_MAP_GET_LOCATION_API' => 'https://api.map.baidu.com/geocoder/v2/?'
 
 ];

@@ -92,10 +92,10 @@ class Index extends Controller
         return json($result);
     }
 
-    public function getSubjectPhotos($id = '1764796')
+    public function getSubjectPhotos($id)
     {
 
-        echo 'xxx';
+        echo 'xxx' . $id;
 
     }
 

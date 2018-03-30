@@ -37,9 +37,11 @@ return [
     ],
     '[movie/subject]' => [
         '/:id' => ['movie/index/getSubectById', ['id' => '\d+']],
+        '/:id/:photos' => ['movie/index/getSubjectPhotos', ['id' => '\d+', 'photos' => 'photos']]
     ],
     '[member]' => [
-        'getUserOpenId' => ['member/index/getUserOpenId']
+        'getUserOpenId' => ['member/index/getUserOpenId'],
+        'getGiftWordByAli' => ['member/index/getGiftWordByAli']
     ]
 
 

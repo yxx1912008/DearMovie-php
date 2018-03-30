@@ -38,6 +38,8 @@ class Index
                 $wxUser['open_id'] = $openId;
                 $wxUser['nick_name'] = $nickName;
                 $wxUser['avatar_url'] = $avatarUrl;
+                $wxUser['token'] = getToken();
+                $wxUser['time_out'] = time();
                 $wxUser->save();
                 $save_result = WxUser::getByOpenId($openId);
                 if (!empty($save_result)) {

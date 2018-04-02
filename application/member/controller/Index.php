@@ -39,17 +39,20 @@ class Index
                 $wxUser['nick_name'] = $nickName;
                 $wxUser['avatar_url'] = $avatarUrl;
                 $wxUser['token'] = getToken();
-                $wxUser['time_out'] = time();
+                $wxUser['time_out'] = date('Y-m-d H:i:s', strtotime('+2 hours'));
                 $wxUser->save();
                 $save_result = WxUser::getByOpenId($openId);
                 if (!empty($save_result)) {
-                    $returnData = ['result' => '1', 'id' => $save_result['id'], ['msg' => '用户注册成功']];
+                    $returnData = ['result' => '1', 'id' => $save_result['id'], 'token' => $save_result['token'], ['msg' => '用户注册成功']];
                     return json($returnData);
                 }
                 $returnData = ['result' => '0', 'msg' => '用户注册失败！'];
                 return json($returnData);
             }
-            $returnData = ['result' => '1', 'id' => $query['id'], 'msg' => '用户查询成功'];
+            $query['time_out'] = date('Y-m-d H:i:s', strtotime('+2 hours'));
+            $query['token'] = getToken();
+            $query->isUpdate()->save();
+            $returnData = ['result' => '1', 'id' => $query['id'], 'token' => $query['token'], 'msg' => '用户查询成功'];
             return json($returnData);
         }
         $returnData = ['result' => '0', '' => '获取用户信息失败'];

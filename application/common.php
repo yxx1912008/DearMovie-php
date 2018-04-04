@@ -19,7 +19,7 @@
  * @param array $params
  * @return mixed
  */
-function requestGet($host, $path, $params = [])
+function requestGet($host, $path, $params = [], $returnGetMsg = 1)
 {
     $method = "GET";
 //    $headers = array();
@@ -35,6 +35,8 @@ function requestGet($host, $path, $params = [])
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
     curl_setopt($curl, CURLOPT_URL, $url);
+    //是否将请求的内容显示在浏览器（常用）
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, $returnGetMsg);
 //    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($curl, CURLOPT_FAILONERROR, false);
     if (1 == strpos("$" . $host, "https://")) {

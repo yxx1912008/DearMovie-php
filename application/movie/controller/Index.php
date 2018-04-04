@@ -22,13 +22,13 @@ class Index extends Controller
      * @param int $start 开始行数
      * @param string $count 每页条数
      */
-    public function in_theaters($city = '杭州', $start = 0, $count = '5')
+    public function in_theaters($city = '杭州', $start = 0, $count = 5)
     {
         $host = config('douban_api_host');
         $path = config('in_theaters_path');
         $params = ['city' => $city, 'start' => $start, 'count' => $count];
         $result = requestGet($host, $path, $params);
-        return json($result);
+        return $result;
     }
 
     /**
@@ -43,7 +43,7 @@ class Index extends Controller
         $path = config('coming_soon');
         $params = ['start' => $start, 'count' => $count];
         $result = requestGet($host, $path, $params);
-        return json($result);
+        return $result;
     }
 
     /**
@@ -58,7 +58,7 @@ class Index extends Controller
         $path = config('top250');
         $params = ['start' => $start, 'count' => $count];
         $result = requestGet($host, $path, $params);
-        return json($result);
+        return $result;
     }
 
     /**
@@ -75,7 +75,7 @@ class Index extends Controller
         $path = config('search');
         $params = ['q' => $q, 'tag' => $tag, 'start' => $start, 'count' => $count];
         $result = requestGet($host, $path, $params);
-        return json($result);
+        return $result;
     }
 
 
@@ -89,7 +89,7 @@ class Index extends Controller
         $host = config('douban_api_host');
         $path = config('subject_id');
         $result = requestGetNoParam($host, $path . $id);
-        return json($result);
+        return $result;
     }
 
     public function getSubjectPhotos($id)

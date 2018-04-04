@@ -87,8 +87,8 @@ class Index extends Controller
     public function getSubectById($id = '1764796')
     {
         $host = config('douban_api_host');
-        $path = config('subject_id');
-        $result = requestGetNoParam($host, $path . $id);
+        $path = config('subject_id') . $id;
+        $result = requestGet($host, $path);
         return $result;
     }
 
